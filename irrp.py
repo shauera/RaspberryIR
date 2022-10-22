@@ -137,7 +137,7 @@ def carrier(gpio, frequency, micros):
    wf = []
    cycle = 1000.0 / frequency
    cycles = int(round(micros/cycle))
-   on = int(round(cycle / 2.0))
+   on = int(round(cycle * 0.33))
    sofar = 0
    for c in range(cycles):
       target = int(round((c+1)*cycle))
