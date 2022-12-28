@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [        
+
+        {
+            "name": "Python: GooglePublishSubscribe",
+            "type": "python",
+            "request": "launch",
+            "program": "GooglePublishSubscribe.py",
+            "console": "integratedTerminal",
+            // "env": {
+            //     "GOOGLE_APPLICATION_CREDENTIALS": "homecontrol-dde07-publisher-private-key-on-rapsberry-pi.json",
+            // },
+            "justMyCode": true
+        },
+        {
+            "name": "irrp send living room code",
+            "type": "python",
+            "request": "launch",
+            "program": "irrp.py",
+            "console": "integratedTerminal",            
+            "justMyCode": true,
+            "args": [
+                "-p", "-g17", "-flight_remote_control.ircodes", "livingRoomArea",
+            ]
+        },
+        {
+            "name": "irrp send main AC offliving room code",
+            "type": "python",
+            "request": "launch",
+            "program": "irrp.py",
+            "console": "integratedTerminal",            
+            "justMyCode": true,
+            "args": [
+                "-p", "-g17", "-fAC.ircodes", "acMainOff",
+            ]
+        },
+    ]
+}
