@@ -1,3 +1,6 @@
+# Setup apps to autorun on raspbery pi boot (currently invoking via systemd)
+# https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
+
 # must set GOOGLE_APPLICATION_CREDENTIALS env var to the file containing the private key to authenticate against google cloud
 
 import os
@@ -52,7 +55,26 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     print("------Received------")
     print(vars(message))
     print("--------------------")
-    main(is_record_mode=False, gpio_pin=17, file_name='light_remote_control.ircodes', code_ids=['livingRoomArea'])
+    data = json.loads(message.data)
+    msg = json.loads(data["message"])
+    ids = []
+    command = msg["inputs"][0]["payload"]["commands"][0]
+    for device in command["devices"]:
+        id = device["id"]
+        if id == "20":
+            if command["execution"][0]["params"]["on"]:
+                id = "acMainOn"
+            else:
+                id = "acMainOff"
+        if id == "21":
+            if command["execution"][0]["params"]["on"]:
+                id = "acBedroomOn"
+            else:
+                id = "acBedroomOff"
+        ids.append(id)
+    print(ids)
+    print("++++++++++++++++++++")
+    main(is_record_mode=False, gpio_pin=17, file_name='AllCodesCombined.ircodes', code_ids=ids)
 
 streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
 print(f"Listening for messages on {subscription_path}..\n")
