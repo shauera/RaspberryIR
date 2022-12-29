@@ -130,3 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# keys
+homecontrol_dde07_publisher_private_key_on_rapsberry_pi
+homecontrol_dde07_subscriber_private_key_on_rapsberry_pi

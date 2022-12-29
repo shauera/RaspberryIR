@@ -1,0 +1,11 @@
+[Unit]
+Description=Infrared home automatoin controller
+After=multi-user.target
+
+[Service]
+Type=idle
+WorkingDirectory=/home/shalom/MyPojects/IRControl
+ExecStart=/usr/bin/python /home/shalom/MyPojects/IRControl/GooglePublishSubscribe.py
+
+[Install]
+WantedBy=multi-user.target
