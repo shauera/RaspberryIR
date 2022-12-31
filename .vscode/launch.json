@@ -3,9 +3,7 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [        
-    
-
+    "configurations": [
         {
             "name": "Python: GooglePublishSubscribe",
             "type": "python",
@@ -29,7 +27,7 @@
             ]
         },
         {
-            "name": "irrp send main AC offliving room code",
+            "name": "irrp send main AC off living room code",
             "type": "python",
             "request": "launch",
             "program": "irrp.py",
@@ -37,6 +35,17 @@
             "justMyCode": true,
             "args": [
                 "-p", "-g17", "-fAC.ircodes", "acMainOff",
+            ]
+        },
+        {
+            "name": "irrp record and output into recordings.txt newRecording",
+            "type": "python",
+            "request": "launch",
+            "program": "irrp.py",
+            "console": "integratedTerminal",            
+            "justMyCode": true,
+            "args": [
+                "-r", "-g27", "-frecordings.txt", "newRecording",
             ]
         },
     ]
