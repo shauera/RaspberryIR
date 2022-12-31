@@ -61,6 +61,11 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     command = msg["inputs"][0]["payload"]["commands"][0]
     for device in command["devices"]:
         id = device["id"]
+        if id == "1":
+            if command["execution"][0]["params"]["on"]:
+                id = "allOn"
+            else:
+                id = "allOff"
         if id == "20":
             if command["execution"][0]["params"]["on"]:
                 id = "acMainOn"
